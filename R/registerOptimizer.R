@@ -1,0 +1,3 @@
+registerOptimizer = function() {
+  UseMethod("registerOptimizer")
+}
