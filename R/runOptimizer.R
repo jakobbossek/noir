@@ -1,4 +1,4 @@
 runOptimizer = function(optimizer, fn) {
-	assertClass(fn, "otf_function")
+	assertClass(fn, "smoof_function")
 	UseMethod("runOptimizer")
 }
