@@ -4,10 +4,14 @@ registerOptimizer.goldensearch = function() {
 		class = "goldensearch",
 		packages = c("base"),
 		hyper.par.set = makeParamSet(
-			makeNumericLearnerParam("tol", lower = 0, default = .Machine$double.eps^0.25)
+      makeNumericVectorLearnerParam("interval"),
+      makeNumericLearnerParam("lower"),
+      makeNumericLearnerParam("upper"),
+      makeNumericLearnerParam("tol", lower = 0, default = .Machine$double.eps^0.25, tunable = FALSE),
+      makeLogicalLearnerParam("maximum", default = TRUE)
 		),
 		objective.type = "single-objective",
-		tags = c("numeric", "deterministic")
+		tags = c("numeric", "deterministic", "1D")
 	), classes = c("goldensearch"))
 }
 
