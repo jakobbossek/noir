@@ -14,7 +14,7 @@
 #' @param packages [\code{character}*]\cr
 #'   Packages needed to execute the optimizer.
 #'   Default is \code{NULL}, i.e., base R is sufficient.
-#' @param hyper.par.set [\code{\link[ParamHelpers]{Paramset}}]\cr
+#' @param hyper.par.set [\code{\link[ParamHelpers]{ParamSet}}]\cr
 #'   Parameter set defining the algorithm parameters.
 #'   See \code{\link[ParamHelpers]{makeParamSet}} for details.
 #' @param objective.type [\code{character(1)}]\cr

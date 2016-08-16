@@ -13,7 +13,7 @@ registerOptimizer.goldensearch = function() {
 
 runOptimizer.goldensearch = function(optimizer, obj.fn, ...) {
   #FIXME: need to load the dependent packages
-  pars = getFinalParameters(optimizer, obj.fun, ...)
+  pars = getFinalParameters(optimizer, obj.fn, ...)
 	par.set = getParamSet(obj.fn)
 	result = optimize(f = obj.fn, interval = c(getLower(par.set), getUpper(par.set)), tol = pars[["tol"]])
 	#FIXME: noir result object needed. Think about neccessary properties and differnece
