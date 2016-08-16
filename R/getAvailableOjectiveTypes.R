@@ -1,5 +1,7 @@
-# Returns possible objective types.
+#' Returns possible objective types.
+#'
+#' @return [\code{character}] Vector of possible objective types.
+#' @export
 getAvailableObjectiveTypes = function() {
-	#FIXME: 'single' and 'multi' are enough? 
 	c("single-objective", "multi-objective")
 }
