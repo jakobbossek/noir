@@ -9,23 +9,24 @@
 # @return [list] Named list parameter settings.
 getFinalParameters = function(optimizer, obj.fn, ...) {
   # get list of passed parameters
-  pars = list(...)
+  user.par.values = list(...)
 
-  # get parameter descriptions
-  hyper.par.set = optimizer$hyper.par.set
+  # get parameter values already assigned to optimizer by calling either
+  # setUpOptimzer(...) or setOptimizerParameters(...)
+  par.values = optimizer$par.values
 
-  # check if all parameters are known
-  unknown.pars = setdiff(names(pars), getParamIds(hyper.par.set))
-  if (length(unknown.pars) > 0L) {
-    stopf("You passed unknown parameters '%s'", collapse(unknown.pars))
-  }
+  # get defaults
+  default.par.values = getDefaults(optimizer$hyper.par.set)
 
-  # get defaults ...
-  def.pars = getDefaults(hyper.par.set)
+  # glue it all together
+  par.values = insert(par.values, user.par.values)
+
+  final.par.values = insert(default.par.values, par.values)
+
+  optimizer = do.call(setOptimizerParams, c(list(optimizer), final.par.values))
 
   # ... and eventually replace defaults with user-defined settings
-  final.pars = insert(def.pars, pars)
-  return(final.pars)
+  return(final.par.values)
 }
 
 # Convert list of parameters into special control object.
@@ -43,4 +44,20 @@ getFinalParameters = function(optimizer, obj.fn, ...) {
 convertArgsToControl = function(wrap.fun, ...) {
   dots = match.call()$...
   do.call(wrap.fun, list(...))
+}
+
+# Check for invalid parameter names and print error message.
+#
+# @param ns [character]
+#   Given names.
+# @param par.set [ParamHelpers::ParamSet]
+#   Parameter set.
+# @return Nothing
+stopOnUnknownParams = function(ns, par.set) {
+  par.names = getParamIds(par.set)
+  if (!isSubset(ns, par.names)) {
+    unknown.par.names = setdiff(ns, par.names)
+    stopf("The following parameters are unknown: %s", collapse(unknown.par.names))
+  }
+  invisible(NULL)
 }

@@ -17,6 +17,9 @@
 #' @param hyper.par.set [\code{\link[ParamHelpers]{ParamSet}}]\cr
 #'   Parameter set defining the algorithm parameters.
 #'   See \code{\link[ParamHelpers]{makeParamSet}} for details.
+#' @param par.values [\code{list}]\cr
+#'   Named list of parameter values.
+#'   Default is the empty list.
 #' @param objective.type [\code{character(1)}]\cr
 #'   One of \dQuote{single-objective} or \dQuote{multi-objective}.
 #'   See \code{\link{getAvailableObjectiveTypes}}.
@@ -31,6 +34,7 @@ internallyRegisterOptimizer = function(
 	class,
 	packages,
 	hyper.par.set,
+  par.values = list(),
 	objective.type = "single-objective",
 	tags = NULL) {
 	assertString(id)
@@ -41,12 +45,14 @@ internallyRegisterOptimizer = function(
 	}
 	assertCharacter(packages, any.missing = FALSE)
 	assertClass(hyper.par.set, "ParamSet")
+  assertList(par.values)
 	sapply(hyper.par.set$pars, function(par) assertClass(par, "LearnerParam"))
 	makeS3Obj(
 		id = id,
 		class = class,
 		packages = packages,
 		hyper.par.set = hyper.par.set,
+    par.values = list(),
 		objective.type = objective.type,
 		tags = tags,
 		classes = c("optimizer")
@@ -56,5 +62,5 @@ internallyRegisterOptimizer = function(
 print.optimizer = function(x, ...) {
 	catf("R optimizer '%s'", x$id)
 	catf("Supports %s target functions.", x$objective.type)
-	catf("#Hyper parameters: %i", sum(getParamLengths(x$hyper.par.set)))
+	catf("#Parameters: %i", getParamNr(x$hyper.par.set, devectorize = FALSE))
 }

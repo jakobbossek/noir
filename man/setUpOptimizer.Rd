@@ -4,11 +4,16 @@
 \alias{setUpOptimizer}
 \title{Generate an optimizer object.}
 \usage{
-setUpOptimizer(class)
+setUpOptimizer(class, ...)
 }
 \arguments{
 \item{class}{[\code{character(1)}]\cr
 ID, i.e., short name, of the optimizer to create.}
+
+\item{...}{[any]\cr
+Further parameters for the optimizer.
+If none provided, the default will be used. Later on, one can set the parameters
+in the \code{\link{noir}} function.}
 }
 \value{
 [\code{noir_optimizer}]

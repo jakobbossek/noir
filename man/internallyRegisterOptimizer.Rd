@@ -5,7 +5,7 @@
 \title{Register a new optimizer / optimization algorithm.}
 \usage{
 internallyRegisterOptimizer(id, class, packages, hyper.par.set,
-  objective.type = "single-objective", tags = NULL)
+  par.values = list(), objective.type = "single-objective", tags = NULL)
 }
 \arguments{
 \item{id}{[\code{character(1)}]\cr
@@ -21,6 +21,10 @@ Default is \code{NULL}, i.e., base R is sufficient.}
 \item{hyper.par.set}{[\code{\link[ParamHelpers]{ParamSet}}]\cr
 Parameter set defining the algorithm parameters.
 See \code{\link[ParamHelpers]{makeParamSet}} for details.}
+
+\item{par.values}{[\code{list}]\cr
+Named list of parameter values.
+Default is the empty list.}
 
 \item{objective.type}{[\code{character(1)}]\cr
 One of \dQuote{single-objective} or \dQuote{multi-objective}.
