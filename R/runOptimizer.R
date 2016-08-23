@@ -1,4 +1,4 @@
-runOptimizer = function(optimizer, fn, ...) {
-	assertClass(fn, "smoof_function")
+runOptimizer = function(optimizer, obj.fn, ...) {
+	assertClass(obj.fn, "smoof_function")
 	UseMethod("runOptimizer")
 }
