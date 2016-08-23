@@ -1,5 +1,7 @@
 #' Check if optimizer has certain properties.
 #'
+#' @param optimizer [\code{noir_optimizer}]\cr
+#'   The optimizer.
 #' @param properties [\code{character}]\cr
 #'   Properties/tags to check for.
 #'   If multiple properties are are passed it is checked whether the optimizer

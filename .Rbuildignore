@@ -8,7 +8,7 @@ Makefile
 README.md
 TODO.md
 test_all.R
-test_specific.R
 playground.R
 .travis.yml
 appveyor.yml
+mytest.R

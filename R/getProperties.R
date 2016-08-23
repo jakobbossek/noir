@@ -1,5 +1,7 @@
 #' Return properties/tags of an optimizer.
 #'
+#' @param optimizer [\code{noir_optimizer}]\cr
+#'   The optimizer.
 #' @return [\code{character}] Character vector of properties.
 #' @export
 getProperties = function(optimizer) {
