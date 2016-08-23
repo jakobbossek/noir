@@ -6,6 +6,10 @@
 \usage{
 getProperties(optimizer)
 }
+\arguments{
+\item{optimizer}{[\code{noir_optimizer}]\cr
+The optimizer.}
+}
 \value{
 [\code{character}] Character vector of properties.
 }
